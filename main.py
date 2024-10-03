@@ -4,7 +4,6 @@ from fastapi.responses import JSONResponse
 from src.gcal.upload import handleCalendar
 from src.llm.models import QueryBody
 from src.llm.request import scheduleEvent
-# from google.oauth2.credentials import Credentials
 
 app = FastAPI()
 
