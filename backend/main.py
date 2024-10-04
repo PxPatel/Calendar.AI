@@ -11,7 +11,7 @@ app = FastAPI()
 def read_root():
    return {"Welcome to": "My first FastAPI depolyment"}
 
-@app.get("/scheduleEvent")
+@app.post("/scheduleEvent")
 def scheduleEventAPI(query: QueryBody):
     result = scheduleEvent(query.prompt)
     # The API would return the missing fields, and then the FE would handle asking follow ups

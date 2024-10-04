@@ -4,6 +4,7 @@ import instructor
 import google.generativeai as genai
 from dotenv import load_dotenv
 
+
 from src.llm.gemini import makeLLMRequest
 from src.llm.models import EventDetails, LLMResponse
 
@@ -82,3 +83,4 @@ if __name__ == "__main__":
     
     # Schedule the event with the LLM
     llm_response = scheduleEvent(user_input)
+    
