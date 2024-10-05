@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Chatbot from './Chatbot';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <h1>My Chatbot</h1>
+        <Chatbot />
+      </main>
     </div>
   );
 }
