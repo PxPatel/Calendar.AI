@@ -1,6 +1,7 @@
 fastapi==0.115.0
 google_api_python_client==2.147.0
 google_auth_oauthlib==1.2.1
+google-generativeai==0.8.2
 instructor==1.5.0
 protobuf==5.28.2
 pydantic==2.9.2
