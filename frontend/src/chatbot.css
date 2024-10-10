@@ -6,16 +6,22 @@
     border: 1px solid #ccc; 
     border-radius: 10px; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
-    background-color: #f9f9f9; 
-    overflow: hidden; 
+    background-color: rgb(236, 231, 231); 
+    overflow: hidden;
+    height: 100%; 
   }
   
+  .interactive {
+    min-height: fit-content;
+    height: 6%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
   /* Chat window styles */
   .chat-window {
     flex-grow: 1; 
     padding: 20px;
     overflow-y: auto; 
-    height: 800px;
     border-bottom: 1px solid #ccc;
   }
   
@@ -54,6 +60,12 @@
     border-radius: 5px; 
     margin-right: 10px; 
   }
+
+  input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #ccc;   
+  }
+  
   
   /* Button styles */
   button {
