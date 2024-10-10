@@ -84,7 +84,7 @@ const Chatbot: React.FC = () => {
           </div>
         )}
       </div>
-      
+
       <form className="interactive" onSubmit={handleSubmit}>
         <input
           type="text"
