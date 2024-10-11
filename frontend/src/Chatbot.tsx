@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Chatbot.css";
 
 interface Message {
@@ -10,14 +10,20 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [accessToken, setAccessToken] = useState<string | null>(null); // State to hold the access token
 
-  // Replace with actual access token logic
-  const accessToken =
-    "ya29.a0AcM612xUaOTye8G1670FINbfiu1Vb_2mm3AkfSy2s0c0H81jhn1AmrVIu-BogPslw2k5n7E7bPhkZ_9RAprQ27tqFJEWwvoEl_drtQtSok2mZZZ9JoqOVEXL1DvtbxRFhq5G0t1HzOWNPSZACQOXiNM2K9MiS06-Q79swZwuaCgYKAf4SARISFQHGX2MipyP-MbmDPS4pC6RP85ybVA0175";
+  useEffect(() => {
+    // Retrieve access token from local storage or context
+    const token = localStorage.getItem("access_token"); // Adjust according to your storage method
+    if (token) {
+      setAccessToken(token); // Store it in state
+    }
+  }, []);
+
   // Handle user input submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!userInput.trim()) return;
+    if (!userInput.trim() || !accessToken) return; // Ensure token is available
 
     // Add user's message to the chat
     const newMessages: Message[] = [
@@ -34,7 +40,7 @@ const Chatbot: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: userInput, accessToken: accessToken }), // Sending the prompt and access token
+        body: JSON.stringify({ prompt: userInput, accessToken }), // Sending the prompt and access token
       });
 
       const data = await response.json();

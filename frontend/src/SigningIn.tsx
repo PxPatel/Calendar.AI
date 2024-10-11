@@ -13,12 +13,12 @@ const SignIn: React.FC = () => {
       const data = await response.json();
 
       // Redirect to Google for authentication
-      console.log("Received auth URL:", data.auth_url);
-      const authUrl = String(data.auth_url); // Convert to string
+      const authUrl = data.auth_url.auth_url; // Convert to string
 
         // Check if authUrl is valid and not empty
-        if (authUrl && authUrl.trim()) {
+        if (typeof(authUrl) === 'string' && authUrl.trim()) {
             console.log("Redirecting to:", authUrl); // Log the URL to be redirected
+            window.location.href = authUrl; // Redirect to the auth URL
         } else {
             console.error("Auth URL is missing or not a valid string:", authUrl);
         }
