@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./chatbot.css";
+import "./Chatbot.css";
 
 interface Message {
   sender: "user" | "bot"; // Ensure sender is strictly 'user' or 'bot'

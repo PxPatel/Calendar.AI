@@ -55,7 +55,6 @@ async def generate_auth_url():
         raise HTTPException(status_code=500, detail="Failed to generate auth URL")
 
 # Route to handle the callback from Google and store the token
-# Route to handle the callback from Google and store the token
 @app.get("/callback")
 async def auth_callback(request: Request):
     code = request.query_params.get("code")
@@ -72,10 +71,11 @@ async def auth_callback(request: Request):
         
         # Exchange authorization code for access token
         flow.fetch_token(code=code)
-        
+    
         # Get credentials
         creds = flow.credentials
-        
+
+
         # Save the credentials for future use
         with open(TOKEN_FILE, "w") as token_file:
             token_file.write(creds.to_json())
@@ -84,7 +84,7 @@ async def auth_callback(request: Request):
         access_token = creds.token
 
         # Redirect to the frontend with the access token properly encoded
-        frontend_url = f"http://localhost:3000/chatbot?access_token={access_token}"
+        frontend_url = f"http://localhost:3000/middle?access_token={access_token}"
         print("Redirecting to:", frontend_url)  # Log the URL
         return RedirectResponse(url=frontend_url)
 
