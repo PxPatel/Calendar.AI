@@ -45,13 +45,12 @@ const Chatbot: React.FC = () => {
 
       const data = await response.json();
       console.log(data);
-
       if (!response.ok || data.verbalStatus === "MISSING_FIELDS") {
         // Handle human-friendly response when there are missing fields
         const missingMessage = data.message;
         setMessages([
           ...newMessages,
-          { sender: "bot", text: missingMessage},
+          { sender: "bot", text: `You are missing some pertinent information preventing me from creating this event. Please rewrite your prompt, with the following criteria added: ${missingMessage}`},
         ]);
       } else {
         // Successful response

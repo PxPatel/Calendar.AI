@@ -14,7 +14,7 @@
 .interactive {
   min-height: fit-content;
   height: 6%;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 /* Chat window styles */
@@ -23,6 +23,7 @@
   padding: 20px;
   overflow-y: auto;
   border-bottom: 1px solid #ccc;
+  min-height: 300px; /* Set a minimum height */
 }
 
 /* General container for messages */
@@ -79,7 +80,7 @@ button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: #6200ea;
+  background-color: #2600fb;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;

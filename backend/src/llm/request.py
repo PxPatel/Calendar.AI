@@ -4,6 +4,7 @@ import instructor
 import google.generativeai as genai
 from dotenv import load_dotenv
 
+
 from src.llm.gemini import makeLLMRequest
 from src.llm.models import EventDetails, LLMResponse
 
@@ -29,7 +30,6 @@ def scheduleEvent(user_prompt: str) -> LLMResponse:
     """
     # Create the LLM prompt with the user input
     prompt = user_prompt
-
     # Call the LLM to generate the initial event details
     llm_response = makeLLMRequest(prompt, client, LLMResponse)
 
@@ -38,16 +38,11 @@ def scheduleEvent(user_prompt: str) -> LLMResponse:
 
     event_data = llm_response.response[0].model_dump()
 
-    # Required fields per system prompt
     required_fields = ['eventName', 'eventDate', 'eventStartTime', 'eventEndTime', 'location', 'timeZone']
     missing_fields = [field for field in required_fields if not event_data.get(field)]
 
-    # Handling missing fields in a human-friendly way
     if len(missing_fields) > 0:
-        # Construct human-readable message for missing fields
-        human_friendly_response = f"I need a bit more information to schedule your event. Specifically, I'm missing: {', '.join(missing_fields)}. Can you please provide these details?"
-
-        return {"verbalStatus": "MISSING_FIELDS", "message": human_friendly_response, "missingFields": missing_fields}
+        return {"verbalStatus": "MISSING", "missingFields": missing_fields}
     else:
         return {"verbalStatus": "SUCCESS", "details": formatEventForGCal(llm_response.response[0])}
 
@@ -88,4 +83,4 @@ if __name__ == "__main__":
     
     # Schedule the event with the LLM
     llm_response = scheduleEvent(user_input)
-    print(llm_response)  # Output the response to check
+    

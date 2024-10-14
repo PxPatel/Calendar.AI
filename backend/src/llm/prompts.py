@@ -1,3 +1,7 @@
+from datetime import datetime
+
+date_string =  datetime.now().strftime("%Y-%m-%d")
+
 system_prompt = '''You are an Event Scheduling Assistant. Your job is to analyze user input related to scheduling tasks, meetings, and reminders, and extract relevant information like event name, date, time, location, attendees, time zone, and optional description.
 
 Required fields:
