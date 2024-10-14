@@ -46,12 +46,12 @@ const Chatbot: React.FC = () => {
       const data = await response.json();
       console.log(data);
 
-      if (!response.ok) {
-        // Handle error responses
-        const missingFields = data.message.join(", ");
+      if (!response.ok || data.verbalStatus === "MISSING_FIELDS") {
+        // Handle human-friendly response when there are missing fields
+        const missingMessage = data.message;
         setMessages([
           ...newMessages,
-          { sender: "bot", text: `Please provide: ${missingFields}` },
+          { sender: "bot", text: missingMessage},
         ]);
       } else {
         // Successful response
@@ -59,7 +59,7 @@ const Chatbot: React.FC = () => {
           ...newMessages,
           {
             sender: "bot",
-            text: `Event created: ${JSON.stringify(data.eventDetails)}`,
+            text: `Scheduled successfully!`,
           },
         ]);
       }
