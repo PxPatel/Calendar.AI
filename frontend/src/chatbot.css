@@ -34,7 +34,7 @@
 
 /* Message box style */
 .message {
-  background-color: rgba(217, 255, 244, 0.824);
+  background-color: rgb(241, 241, 241);
   padding: 10px 15px;
   border-radius: 15px; /* Changed to a fixed value for consistency */
   max-width: 60%;
@@ -47,10 +47,20 @@
 /* Bot message styles (aligned to the left) */
 .slab.bot {
   justify-content: flex-start;
+
 }
+
+.slab.bot .message {
+  border-left: 3px solid palevioletred; /* Red border for bot messages */
+}
+
 /* User message styles (aligned to the right) */
 .slab.user {
   justify-content: flex-end;
+}
+
+.slab.user .message {
+  border-right: 3px solid rebeccapurple; /* Red border for bot messages */
 }
 
 /* Input form styles */
@@ -79,7 +89,7 @@ button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: azure;
+  background-color: rgb(181, 194, 255);
   color: rgb(0, 0, 0);
   cursor: pointer;
   transition: background-color 0.3s;
