@@ -5,7 +5,7 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-calendarName = "CalendarAI"
+calendarName = "Kale"
 
 def getCalendarId(service):
     if not service:
